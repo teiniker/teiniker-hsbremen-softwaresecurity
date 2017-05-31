@@ -40,7 +40,7 @@ public class SHATest
 	{
 		String message = "mypassword"; 
 		
-		MessageDigest algorithm = MessageDigest.getInstance("SHA-256", "BC");		
+		MessageDigest algorithm = MessageDigest.getInstance("SHA-256");		
 		algorithm.update(message.getBytes("UTF-8"));
 		byte[] bytes = algorithm.digest();
 
