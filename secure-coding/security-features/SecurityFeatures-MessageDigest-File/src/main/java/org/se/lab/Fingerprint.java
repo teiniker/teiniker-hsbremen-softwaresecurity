@@ -52,7 +52,7 @@ public class Fingerprint
         } 
         catch (IOException e)
         {
-            throw new IllegalStateException("Can't read file: " + file.getAbsolutePath());
+            throw new IllegalStateException("Can't read file: " + file.getAbsolutePath(), e);
         }      
     }
 }
