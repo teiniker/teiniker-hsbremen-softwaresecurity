@@ -169,3 +169,11 @@ How to Access the Web Application from a Browser?
 URL: http://localhost:8080/Wildfly-Authentication-FormBased/
 
 
+How to calculate Wildfly's hash value?
+-------------------------------------------------------------------------------
+
+HEX(MD5("student:ApplicationRealm:student"))
+
+student=82364171bad00c2c933b216cac1001d4
+
+
