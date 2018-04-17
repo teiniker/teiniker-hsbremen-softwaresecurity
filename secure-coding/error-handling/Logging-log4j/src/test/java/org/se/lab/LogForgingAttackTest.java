@@ -20,13 +20,44 @@ public class LogForgingAttackTest
 	@Test
 	public void testLogForging()
 	{
-		aMethod("homer");
-		aMethod("bart\n 2099-01-01 00:00:00,000 [main] INFO HACK!!!!"); 
-		aMethod("lisa");
+		log("homer");
+		log("bart\n 2099-01-01 00:00:00,000 [main] INFO HACK!!!!");
+		log("lisa");
 	}
-	
-	protected void aMethod(String name)
+
+
+    @Test
+    public void testLogEncoding()
+    {
+        log(encodeLogMessage("homer"));
+        log(encodeLogMessage("bart\n 2099-01-01 00:00:00,000 [main] INFO HACK!!!!"));
+        log(encodeLogMessage("lisa"));
+    }
+
+
+	protected void log(String name)
 	{
 		logger.info("Parameter name = " + name);
 	}
+
+
+	private String encodeLogMessage(String msg)
+    {
+        int len = msg.length();
+        StringBuilder html = new StringBuilder();
+        for(int i=0; i<len; i++)
+        {
+            char c = msg.charAt(i);
+            char encoding;
+            switch(c)
+            {
+                case '\r': encoding = '_'; break;
+                case '\n': encoding = '_'; break;
+                case '\t': encoding = '_'; break;
+                default: encoding = c;
+            }
+            html.append(encoding);
+        }
+        return html.toString();
+    }
 }
