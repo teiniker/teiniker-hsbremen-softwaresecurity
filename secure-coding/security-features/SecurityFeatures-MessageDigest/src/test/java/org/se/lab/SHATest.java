@@ -60,7 +60,7 @@ public class SHATest
 	{
 		String message = "mypassword"; 
 		
-		MessageDigest algorithm = MessageDigest.getInstance("SHA-512");		
+		MessageDigest algorithm = MessageDigest.getInstance("SHA-512");
 		algorithm.update(message.getBytes("UTF-8"));
 		byte[] bytes = algorithm.digest();
 

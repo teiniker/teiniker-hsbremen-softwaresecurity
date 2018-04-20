@@ -9,6 +9,7 @@ Parallel Base64 Encoder
 ---------------------------------------------------------------------
 
 1. Implement the task
+---------------------
 Reuse the given test class "BinaryFileEncodingAndDecodingTest" to 
 implement a class called "EncodingTask" that implements the "Runnable"
 interface.
@@ -20,6 +21,7 @@ Implement the run() method with a proper error handling.
 
 
 2. Implement the parallel encoder
+---------------------------------
 Write a class called "ParallelBase64Encoder" that provides the following
 method:
 

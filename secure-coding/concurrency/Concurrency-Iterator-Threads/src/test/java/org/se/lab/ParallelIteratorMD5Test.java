@@ -23,7 +23,7 @@ public class ParallelIteratorMD5Test
 	@Test
 	public void testMD5EncoderWithThreads()
 	{
-		ParallelIteratorWithThreads.execute(data, AlgorithmMD5Encoder.class, 6);
+		ParallelIteratorWithThreads.execute(data, AlgorithmMD5Encoder.class, 3);
 		
 		Assert.assertEquals(EXPECTED, data.toString());
 	}

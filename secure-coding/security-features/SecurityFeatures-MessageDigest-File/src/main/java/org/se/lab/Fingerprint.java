@@ -38,21 +38,30 @@ public class Fingerprint
             
         if(!file.exists())
             throw new IllegalArgumentException("File " + file.getAbsolutePath() + " does not exist!");
-        
+
+        InputStream in = null;
         try
         {        
             int length = (int) file.length();
             byte[] content = new byte[length];
-
-            InputStream in = new FileInputStream(file);
+            in = new FileInputStream(file);
             in.read(content);
-            in.close();
-            
+
             return sha256(content);
         } 
         catch (IOException e)
         {
             throw new IllegalStateException("Can't read file: " + file.getAbsolutePath(), e);
-        }      
+        }
+        finally
+        {
+            try
+            {
+                in.close();
+            } catch (IOException e)
+            {
+                // LOG.error();
+            }
+        }
     }
 }
