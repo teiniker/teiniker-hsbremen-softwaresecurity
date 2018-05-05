@@ -1,0 +1,9 @@
+org.se.lab.ConsoleLogin -> a:
+    java.util.Map table -> a
+    java.lang.String username -> a
+    java.lang.String password -> b
+    void <init>() -> <init>
+    java.lang.String calculateHashString(java.lang.String) -> a
+org.se.lab.Main -> org.se.lab.Main:
+    void <init>() -> <init>
+    void main(java.lang.String[]) -> main
