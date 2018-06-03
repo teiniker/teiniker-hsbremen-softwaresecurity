@@ -1,0 +1,23 @@
+<project name="ShoppingCart" default="obfuscate">
+	<property name="lib.proguard" location="vendor/proguard-6.0/lib" />
+	<property name="build" location="build" />
+
+	<path id="classpath">
+		<pathelement path="${lib.proguard}/proguard.jar" />
+	</path>
+
+
+	<target name="init">
+		<mkdir dir="${build}" />
+	</target>
+
+	<target name="clean">
+		<delete dir="${build}" />
+	</target>
+
+	<target name="obfuscate" depends="init">
+		<taskdef resource="proguard/ant/task.properties" classpath="${lib.proguard}/proguard.jar" />
+		<proguard configuration="config.pro" />
+	</target>
+
+</project>
