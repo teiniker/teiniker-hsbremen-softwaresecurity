@@ -1,0 +1,21 @@
+Exercise: Password Brute-Force-Attack
+-------------------------------------------------------------------------------
+
+Given a wordlist.txt file which stores all 4 character strings from "aaaa" to
+"zzzz".
+
+We have used an SQL injection attack to get hashed passwords from a database
+table. From the size of the Hash value we can guess that a "SHA-512" algorithm
+has been used.
+
+Try to crack the following Hash value (get the plain text password for the Hash
+value):
+
+i)  For every string in the wordlist.txt file, calculate the "SHA-512" Hash value
+
+ii) If the calculated Hash value matches the given Hash value, you know the
+    plaintext password - it's the used string.
+
+Implement all the code within the "BruteForceTest" file.
+
+Tip: Have a look to the "FileReaderTest" to find out how to read text files.
