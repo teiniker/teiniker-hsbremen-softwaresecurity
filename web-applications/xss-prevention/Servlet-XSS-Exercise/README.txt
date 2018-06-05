@@ -35,6 +35,18 @@ c) Stealing cookies
 Note that this attack can also be used to steal session ids!!
 
 
+How to trick the user to enter the password?
+---------------------------------------------------------------------
+HTML Injection: Deploy the ServletLogger application and enter the
+following HTML code as "username":
+
+<br>
+<form method="post" action="/Servlet-Logger/controller">
+Login: <input type="text" name="username"><br>
+Password: <input type="password" name="password"><br>
+<input type="submit" value="Submit" />
+</form>
+
 How to fix these vulnerabilities?
 ---------------------------------------------------------------------
 
