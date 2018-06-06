@@ -64,6 +64,7 @@ public class ControllerServlet extends HttpServlet
         {   
         	String name = request.getParameter("name");
         	String quantity = request.getParameter("quantity");
+        	// TODO: Input Validation!!!
         	ArrayList<Product> cart = listFromString(request.getParameter("state"));
         	
         	Product product = new Product(name, quantity);
