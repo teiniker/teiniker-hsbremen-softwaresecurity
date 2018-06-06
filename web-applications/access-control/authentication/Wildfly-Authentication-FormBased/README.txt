@@ -166,7 +166,7 @@ application. This page is shown if your authentication is successful.
 How to Access the Web Application from a Browser?
 -------------------------------------------------------------------------------
 
-URL: http://localhost:8080/Wildfly-Authentication-FormBased/
+URL:
 
 
 How to calculate Wildfly's hash value?
