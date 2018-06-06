@@ -27,17 +27,16 @@ public class JWSwithHMACProtection
     public void setup() throws DecoderException
     {
         key = Hex.decodeHex("2235a2c49443387aaf08cbe5b59c4a07c1e11d24cad8abe244973a1c1dba4e1d".toCharArray()); 
-        
     }
     
     @Test
     public void testRandomSecret()
     {
-        // Generate random 256-bit (32-byte) shared secret
+        // Generate random 256-bit (32-byte) secret which could be used as key
         SecureRandom random = new SecureRandom();
-        byte[] sharedSecret = new byte[32];
-        random.nextBytes(sharedSecret);
-        System.out.println("sharedSecret   : " + Hex.encodeHexString(sharedSecret));        
+        byte[] secret = new byte[32];
+        random.nextBytes(secret);
+        System.out.println("secret   : " + Hex.encodeHexString(secret));
     }
 
     
